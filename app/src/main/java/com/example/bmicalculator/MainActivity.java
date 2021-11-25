@@ -13,32 +13,47 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    // Class Variables are also called 'fields'
+    private TextView resultText;
+    private Button calculateButton;
+    private RadioButton maleButton;
+    private RadioButton femaleButton;
+    private EditText ageEditText;
+    private EditText feetEditText;
+    private EditText inchesEditText;
+    private EditText weightEditText;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        findViews();
+        setupButtonClickListener();
 
-        TextView resultText = findViewById(R.id.text_view_result);
+    }
 
-        RadioButton maleButton = findViewById(R.id.radio_button_male);
-        RadioButton femaleButton = findViewById(R.id.radio_button_other);
 
-        EditText ageEditText = findViewById(R.id.edit_text_age);
-        EditText feetEditText = findViewById(R.id.edit_text_feet);
-        EditText inchesEditText = findViewById(R.id.edit_text_inches);
-        EditText weightEditText = findViewById(R.id.edit_text_weight);
+    private void findViews() {
+        resultText = findViewById(R.id.text_view_result);
+        maleButton = findViewById(R.id.radio_button_male);
+        femaleButton = findViewById(R.id.radio_button_other);
+        ageEditText = findViewById(R.id.edit_text_age);
+        feetEditText = findViewById(R.id.edit_text_feet);
+        inchesEditText = findViewById(R.id.edit_text_inches);
+        weightEditText = findViewById(R.id.edit_text_weight);
 
-        Button calculateButton = findViewById(R.id.button_calculate);
+        calculateButton = findViewById(R.id.button_calculate);
+    }
 
+    private void setupButtonClickListener() {
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this,"Wow! You got this man!",Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "Wow! You got this man!", Toast.LENGTH_LONG).show();
             }
         });
-
     }
+
+
 }
