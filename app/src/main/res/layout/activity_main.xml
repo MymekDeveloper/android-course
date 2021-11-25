@@ -31,10 +31,10 @@
 
 
         <RadioButton
-            android:id="@+id/radio_button_other"
+            android:id="@+id/radio_button_female"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Other"/>
+            android:text="Female"/>
 
     </RadioGroup>
 
@@ -79,7 +79,7 @@
         android:layout_margin="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Weight"
+        android:hint="Weight(kg)"
         />
 
     <Button
@@ -94,7 +94,7 @@
         android:layout_margin="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="23.6 - You are healthy weight"/>
+        android:text="Let's put your data to calculator"/>
 
 
 

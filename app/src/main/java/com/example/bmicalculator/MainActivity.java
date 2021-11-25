@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private void findViews() {
         resultText = findViewById(R.id.text_view_result);
         maleButton = findViewById(R.id.radio_button_male);
-        femaleButton = findViewById(R.id.radio_button_other);
+        femaleButton = findViewById(R.id.radio_button_female);
         ageEditText = findViewById(R.id.edit_text_age);
         feetEditText = findViewById(R.id.edit_text_feet);
         inchesEditText = findViewById(R.id.edit_text_inches);
@@ -55,19 +55,27 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //Toast.makeText(MainActivity.this, "Wow! You got this man!", Toast.LENGTH_LONG).show();
                  double bmiResult = calculateBMI();
-                displayResult(bmiResult);
+
+                String ageText = ageEditText.getText().toString();
+                int age = Integer.parseInt(ageText);
+
+                if (age >= 18) {
+                    displayResult(bmiResult);
+                }else {
+                    displayGuidance(bmiResult);
+                }
+
             }
         });
     }
 
+
     private double calculateBMI() {
-        String ageText = ageEditText.getText().toString();
         String feetText = feetEditText.getText().toString();
         String inchesText = inchesEditText.getText().toString();
         String weightText = weightEditText.getText().toString();
 
         // Converting the number 'Strings' into 'int' variables
-        int age = Integer.parseInt(ageText);
         int feet = Integer.parseInt(feetText);
         int inches = Integer.parseInt(inchesText);
         int weight = Integer.parseInt(weightText);
@@ -103,4 +111,18 @@ public class MainActivity extends AppCompatActivity {
         resultText.setText(fullResultString);
     }
 
+    private void displayGuidance(double bmi) {
+        DecimalFormat myDecimalFormatter = new DecimalFormat("0.00");
+        String bmiTextResult = myDecimalFormatter.format(bmi);
+
+        String fullResultString;
+        if(maleButton.isChecked()){
+            fullResultString = bmiTextResult + " - As you are under 18, please consult with your doctor for the healthy range for the boys";
+        }else if (femaleButton.isChecked()){
+            fullResultString = bmiTextResult + " - As you are under 18, please consult with your doctor for the healthy range for the girls";
+        }else{
+            fullResultString = bmiTextResult + " - As you are under 18, please consult with your doctor for the healthy range";
+        }
+        resultText.setText(fullResultString);
+    }
 }
